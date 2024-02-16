@@ -5,6 +5,16 @@
     <title>Add attraction</title>
 </head>
 <body>
-THIS IS WHERE YOU ADD ATTRACTION
+<form action="/attractions/create" th:objects="${attraction}" method="post">
+    <p>
+        <label>Navn på attraktion</label>
+        <input type="text" name="name" th:field="*{attraction.name}"/>
+    </p>
+    <p>
+        <label>Beskrivelse</label>
+        <input type="text" name="pris" th:field="*{attraction.description}"/>
+    </p>
+    <input type="submit" value="Tilføj attraktion"/>
+</form>
 </body>
 </html>
