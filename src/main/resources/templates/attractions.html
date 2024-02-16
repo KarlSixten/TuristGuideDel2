@@ -8,7 +8,7 @@
 <table>
     <thead><h1>Attraktioner</h1></thead>
     <tbody>
-    <tr>
+    <tr th:if="${!attractionsList.isEmpty()}">
         <td><h3>Navn</h3></td>
         <td><h3>Beskrivelse</h3></td>
         <td><h3>By</h3></td>
