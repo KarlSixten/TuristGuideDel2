@@ -27,7 +27,6 @@ public class TouristRepository {
         return attractionList;
     }
 
-    /*
     public TouristAttraction findAttraction(String searchString) {
         for (TouristAttraction touristAttraction : attractionList) {
             if (touristAttraction.getName().equalsIgnoreCase(searchString)) {
@@ -36,5 +35,4 @@ public class TouristRepository {
         }
         return null;
     }
-    */
 }

@@ -2,9 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Tags</title>
+    <title>th:te${attraction.name} + Tags</title>
 </head>
 <body>
-THIS IS TAGS
+<table>
+    <thead><h3 th:text="${attraction.name} + ' tags'"></h3></thead>
+    <tbody>
+    <tr th:each="tag : ${attraction.tags}">
+        <td th:text="${tag}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
