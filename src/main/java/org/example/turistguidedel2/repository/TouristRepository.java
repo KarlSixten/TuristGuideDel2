@@ -17,13 +17,24 @@ public class TouristRepository {
 
     private void populateAttractionList() {
         attractionList = new ArrayList<>(List.of(
-                new TouristAttraction("Tivoli", "Forlystelsespark i København"),
-                new TouristAttraction("SMK", "Statens museum for kunst"),
-                new TouristAttraction("Rundetårn", "Et rundt tårn")
+                new TouristAttraction("Tivoli", "Forlystelsespark i København", List.of("Hyggeligt", "Dyrt")),
+                new TouristAttraction("SMK", "Statens museum for kunst", List.of("Hyggeligt", "Billigt")),
+                new TouristAttraction("Rundetårn", "Et rundt tårn", List.of("Historisk"))
         ));
     }
 
     public List<TouristAttraction> getAttractionList() {
         return attractionList;
     }
+
+    /*
+    public TouristAttraction findAttraction(String searchString) {
+        for (TouristAttraction touristAttraction : attractionList) {
+            if (touristAttraction.getName().equalsIgnoreCase(searchString)) {
+                return touristAttraction;
+            }
+        }
+        return null;
+    }
+    */
 }

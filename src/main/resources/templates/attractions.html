@@ -6,11 +6,20 @@
 </head>
 <body>
 <table>
-    <thead><tr>Attraktioner</tr></thead>
+    <thead><h1>Attraktioner</h1></thead>
     <tbody>
+    <tr>
+        <td><h3>Navn</h3></td>
+        <td><h3>Beskrivelse</h3></td>
+    </tr>
     <tr th:each="attraction : ${attractionsList}">
         <td th:text="${attraction.name}"></td>
         <td th:text="${attraction.description}"></td>
+        <td>
+            <a th:href="'attractions/' + ${attraction.name} + '/tags'">
+                <button>Tags</button>
+            </a>
+        </td>
     </tr>
     </tbody>
 </table>
