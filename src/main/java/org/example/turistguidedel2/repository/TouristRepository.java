@@ -36,4 +36,8 @@ public class TouristRepository {
         }
         return null;
     }
+
+    public void deleteAttraction(TouristAttraction touristAttraction) {
+        attractionList.remove(touristAttraction);
+    }
 }

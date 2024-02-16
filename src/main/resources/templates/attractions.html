@@ -19,6 +19,11 @@
         <td th:text="${attraction.description}"></td>
         <td th:text="${attraction.city}"></td>
         <td>
+            <a th:href="'attractions/' + ${attraction.name} + '/delete'">
+                <button>Slet</button>
+            </a>
+        </td>
+        <td>
             <a th:href="'attractions/' + ${attraction.name} + '/tags'">
                 <button>Tags</button>
             </a>

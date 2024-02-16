@@ -21,4 +21,8 @@ public class TouristService {
     public TouristAttraction findAttraction(String searchString) {
         return touristRepository.findAttraction(searchString);
     }
+
+    public void deleteAttraction(TouristAttraction touristAttraction) {
+        touristRepository.deleteAttraction(touristAttraction);
+    }
 }

@@ -55,7 +55,9 @@ public class TouristController {
     }
 
     @GetMapping("{name}/delete")
-    public String deleteAttraction() {
-        return null;
+    public String deleteAttraction(@PathVariable("name") String name) {
+        TouristAttraction attractionToDelete = touristService.findAttraction(name);
+        touristService.deleteAttraction(attractionToDelete);
+        return "redirect:/attractions";
     }
 }
