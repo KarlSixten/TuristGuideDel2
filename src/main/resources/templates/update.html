@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/attractions/update" method="post" th:objects="${touristattraction}">
+<p>
+    <label>Navn</label>
+    <input name="name"type="text" th:value="${touristattraction.name}">
+</p>
+    <p>
+    <label>Beskrivelse</label>
+    <input name="description"type="text" th:value="${touristattraction.description}">
+</p>
+    <p>
+    <label>By</label>
+    <input name="city"type="text" th:value="${touristattraction.city}">
+</p>
+    <input type="submit" value="Opdater attraktion">
+
+</form>
+</body>
+</html>
