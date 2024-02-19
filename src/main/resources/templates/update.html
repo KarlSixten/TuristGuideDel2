@@ -32,6 +32,10 @@
                 <label class="form-check-label" th:text="${tag}"></label>
             </div>
         </div>
+        <p>
+            <label>Pris</label>
+            <input name="ticketPrice" type="number" th:number="*{attraction.ticketPrice}">
+        </p>
         <button type="submit" class="btn btn-primary">Opdater attraktion</button>
         <a href="/attractions" class="btn btn-secondary">Tilbage</a>
     </form>

@@ -44,6 +44,11 @@
                 <input class="form-check-input" type="checkbox" th:field="*{attraction.tags}" th:value="${tag}" th:text="${tag}" />
             </div>
         </div>
+    </p>
+    <p>
+        <label>Pris</label>
+        <input type="number" name="ticketPrice" th:number="*{attraction.ticketPrice}">
+    </p>
     </div>
     <button type="submit" class="btn btn-primary">Tilføj attraktion</button>
 </form>

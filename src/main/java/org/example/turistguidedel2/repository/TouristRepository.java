@@ -19,11 +19,10 @@ public class TouristRepository {
 
     private void populateAttractionList() {
         attractionList = new ArrayList<>(List.of(
-                new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", List.of("Hyggeligt", "Dyrt")),
-                new TouristAttraction("SMK", "Statens museum for kunst", "København", List.of("Hyggeligt", "Billigt")),
-                new TouristAttraction("Tivoli Friheden", "Forlystelsespark i Aarhus", "Aarhus", List.of("Uhyggeligt", "Billigt")),
-                new TouristAttraction("Rundetårn", "Et rundt tårn", "København", List.of("Historisk"))
-        ));
+                new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")),
+                new TouristAttraction("SMK", "Statens museum for kunst", "København", 15, List.of("Hyggeligt", "Billigt")),
+                new TouristAttraction("Tivoli Friheden", "Forlystelsespark i Aarhus", "Aarhus", 300, List.of("Uhyggeligt", "Billigt")),
+                new TouristAttraction("Rundetårn", "Et rundt tårn", "København", 250, List.of("Historisk"))));
     }
 
     public List<TouristAttraction> getAttractionList() {
