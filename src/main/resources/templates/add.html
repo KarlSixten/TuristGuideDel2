@@ -5,14 +5,27 @@
     <title>Add attraction</title>
 </head>
 <body>
-<form action="/attractions/create" th:objects="${attraction}" method="post">
+<form action="/attractions/save" th:objects="${attraction}" method="post">
     <p>
         <label>Navn på attraktion</label>
         <input type="text" name="name" th:field="*{attraction.name}"/>
     </p>
     <p>
         <label>Beskrivelse</label>
-        <input type="text" name="pris" th:field="*{attraction.description}"/>
+        <input type="text" name="description" th:field="*{attraction.description}"/>
+    </p>
+    <p>
+        <label>By</label>
+        <select th:field="*{attraction.city}">
+            <option value="">Vælg venligst</option>
+            <option th:each="city : ${validCities}" th:value="${city}" th:text="${city}"></option>
+        </select>
+    </p>
+    <p>
+        <label>Tags</label>
+        <div th:each="tag : ${tagsList}">
+            <input type="checkbox" th:field="*{attraction.tags}" th:value="${tag}" th:text="${tag}" />
+        </div>
     </p>
     <input type="submit" value="Tilføj attraktion"/>
 </form>

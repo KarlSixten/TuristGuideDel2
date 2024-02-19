@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public class TouristRepository {
     private List<TouristAttraction> attractionList;
+    private List<String> validCities = List.of("København", "Aarhus", "Odense");
+    private List<String> tagsList = List.of("Hyggeligt", "Billigt", "Dyrt", "Historisk");
 
     public TouristRepository() {
         populateAttractionList();
@@ -28,6 +30,14 @@ public class TouristRepository {
         return attractionList;
     }
 
+    public List<String> getValidCities() {
+        return validCities;
+    }
+
+    public List<String> getTagsList() {
+        return tagsList;
+    }
+
     public TouristAttraction findAttraction(String searchString) {
         for (TouristAttraction touristAttraction : attractionList) {
             if (touristAttraction.getName().equalsIgnoreCase(searchString)) {
@@ -39,5 +49,9 @@ public class TouristRepository {
 
     public void deleteAttraction(TouristAttraction touristAttraction) {
         attractionList.remove(touristAttraction);
+    }
+
+    public void addAttraction(TouristAttraction attractionToAdd) {
+        attractionList.add(attractionToAdd);
     }
 }

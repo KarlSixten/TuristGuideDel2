@@ -22,7 +22,19 @@ public class TouristService {
         return touristRepository.findAttraction(searchString);
     }
 
-    public void deleteAttraction(TouristAttraction touristAttraction) {
-        touristRepository.deleteAttraction(touristAttraction);
+    public void deleteAttraction(TouristAttraction attractionToDelete) {
+        touristRepository.deleteAttraction(attractionToDelete);
+    }
+
+    public void addAttraction(TouristAttraction attractionToAdd) {
+        touristRepository.addAttraction(attractionToAdd);
+    }
+
+    public List<String> getValidCities() {
+        return touristRepository.getValidCities();
+    }
+
+    public List<String> getTagsList() {
+        return touristRepository.getTagsList();
     }
 }
