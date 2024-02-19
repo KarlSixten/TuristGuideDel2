@@ -47,13 +47,15 @@ public class TouristController {
     }
 
     @GetMapping("{name}/edit")
-    public String editAttraction() {
-        return null;
+    public String editAttraction(@PathVariable("name") String name, Model model) {
+        model.addAttribute("touristattraction", touristService.findAttraction(name));
+        return "update";
     }
 
     @PostMapping("update")
-    public String updateAttraction() {
-        return null;
+    public String updateAttraction(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.updateAttraction(touristAttraction);
+        return"redirect:/attractions";
     }
 
     @GetMapping("{name}/delete")

@@ -54,4 +54,12 @@ public class TouristRepository {
     public void addAttraction(TouristAttraction attractionToAdd) {
         attractionList.add(attractionToAdd);
     }
-}
+    public void updateAttraction(TouristAttraction attractionToUpdate) {
+        for (int i = 0; i < attractionList.size(); i++) {
+            TouristAttraction attraction = attractionList.get(i);
+            if (attraction.getName().equals(attractionToUpdate.getName())) {
+                attractionList.set(i, attractionToUpdate);
+                return;
+            }
+        }
+}}

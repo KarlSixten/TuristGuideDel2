@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Attractions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
 <table>
@@ -27,6 +28,9 @@
             <a th:href="'attractions/' + ${attraction.name} + '/tags'">
                 <button>Tags</button>
             </a>
+        </td>
+        <td>
+<a th:href="'attractions/' + ${attraction.name} + '/edit'" class="btn btn-primary">Opdater</a>
         </td>
     </tr>
     </tbody>

@@ -37,4 +37,7 @@ public class TouristService {
     public List<String> getTagsList() {
         return touristRepository.getTagsList();
     }
+    public void updateAttraction(TouristAttraction touristAttraction){
+        touristRepository.updateAttraction(touristAttraction);
+    }
 }
