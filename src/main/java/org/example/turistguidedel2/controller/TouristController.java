@@ -48,13 +48,17 @@ public class TouristController {
 
     @GetMapping("{name}/edit")
     public String editAttraction(@PathVariable("name") String name, Model model) {
-        model.addAttribute("touristattraction", touristService.findAttraction(name));
+        TouristAttraction attractionToUpdate = touristService.findAttraction(name);
+        model.addAttribute("attraction", attractionToUpdate);
+        model.addAttribute("indexOfAttraction", touristService.getAttractionList().indexOf(attractionToUpdate));
+        model.addAttribute("validCities", touristService.getValidCities());
+        model.addAttribute("tagsList", touristService.getTagsList());
         return "update";
     }
 
     @PostMapping("update")
-    public String updateAttraction(@ModelAttribute TouristAttraction touristAttraction) {
-        touristService.updateAttraction(touristAttraction);
+    public String updateAttraction(@RequestParam int indexOfAttraction, @ModelAttribute TouristAttraction attractionToUpdate) {
+        touristService.updateAttraction(indexOfAttraction, attractionToUpdate);
         return"redirect:/attractions";
     }
 
