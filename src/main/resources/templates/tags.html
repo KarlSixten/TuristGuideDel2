@@ -3,18 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${attraction.name} + ' tags'"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+          crossorigin="anonymous">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h3 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-<table>
-    <thead><h3 th:text="${attraction.name} + ' tags'"></h3></thead>
+<h3 th:text="${attraction.name} + ' tags'" class="mb-4"></h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Tags</th>
+    </tr>
+    </thead>
     <tbody>
     <tr th:each="tag : ${attraction.tags}">
         <td th:text="${tag}"></td>
     </tr>
     </tbody>
 </table>
-<a href="/attractions">
-    <button>Tilbage</button>
-</a>
+<a href="/attractions" class="btn btn-primary">Tilbage</a>
 </body>
 </html>

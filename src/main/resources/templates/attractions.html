@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
-<table>
+<table class="table table-dark">
     <thead><h1>Attraktioner</h1></thead>
     <tbody>
     <tr th:if="${!attractionsList.isEmpty()}">
@@ -20,13 +20,11 @@
         <td th:text="${attraction.description}"></td>
         <td th:text="${attraction.city}"></td>
         <td>
-            <a th:href="'attractions/' + ${attraction.name} + '/delete'">
-                <button>Slet</button>
+            <a th:href="'attractions/' + ${attraction.name} + '/delete'" class="btn btn-danger"> Slet
             </a>
         </td>
         <td>
-            <a th:href="'attractions/' + ${attraction.name} + '/tags'">
-                <button>Tags</button>
+            <a th:href="'attractions/' + ${attraction.name} + '/tags'" class="btn btn-info">Tags
             </a>
         </td>
         <td>
@@ -35,8 +33,7 @@
     </tr>
     </tbody>
 </table>
-<a href="attractions/add">
-    <button>Tilføj attraktion</button>
+<a href="attractions/add" class="btn btn-dark">Tilføj attraktion
 </a>
 </body>
 </html>
