@@ -1,7 +1,6 @@
 package org.example.turistguidedel2.repository;
 
 import org.example.turistguidedel2.model.TouristAttraction;
-import org.example.turistguidedel2.service.TouristService;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -10,8 +9,8 @@ import java.util.List;
 @Repository
 public class TouristRepository {
     private List<TouristAttraction> attractionList;
-    private List<String> validCities = List.of("København", "Aarhus", "Odense");
-    private List<String> tagsList = List.of("Hyggeligt", "Billigt", "Dyrt", "Historisk");
+    private final List<String> validCities = List.of("København", "Aarhus", "Odense");
+    private final List<String> tagsList = List.of("Hyggeligt", "Billigt", "Dyrt", "Historisk");
 
     public TouristRepository() {
         populateAttractionList();
