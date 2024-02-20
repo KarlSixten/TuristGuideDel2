@@ -26,6 +26,7 @@
             <a th:href="'attractions/' + ${attraction.name} + '/tags'" class="btn btn-info">Tags</a>
         </td>
         <td th:text="${attraction.ticketPrice}"></td>
+        <td th:text="${#numbers.formatDecimal(attraction.ticketPrice * dkkToEur,1,2)}"></td>
         <td>
             <a th:href="'attractions/' + ${attraction.name} + '/edit'" class="btn btn-primary">Opdater</a>
             <a th:href="'attractions/' + ${attraction.name} + '/delete'" class="btn btn-danger"> Slet</a>

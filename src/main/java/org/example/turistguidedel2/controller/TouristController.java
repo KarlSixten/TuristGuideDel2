@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -18,9 +19,10 @@ public class TouristController {
     }
 
     @GetMapping("")
-    public String getAllAttractions(Model model) {
+    public String getAllAttractions(Model model) throws IOException {
         List<TouristAttraction> attractionList = touristService.getAttractionList();
         model.addAttribute("attractionsList", attractionList);
+        model.addAttribute("dkkToEur", touristService.getDkkToEur());
         return "attractions";
     }
 
