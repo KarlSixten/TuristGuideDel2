@@ -8,8 +8,7 @@ public class CurrencyRate {
         private double EUR;
 
         private double dkkToEur() {
-            double eurDkk = EUR / DKK;
-            return eurDkk;
+            return EUR / DKK;
         }
 
         public double getDkkToEur() {

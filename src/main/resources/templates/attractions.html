@@ -22,7 +22,6 @@
         <td th:text="${attraction.description}"></td>
         <td th:text="${attraction.city}"></td>
         <td>
-
             <a th:href="'attractions/' + ${attraction.name} + '/tags'" class="btn btn-info">Tags</a>
         </td>
         <td th:text="${attraction.ticketPrice}"></td>
@@ -34,7 +33,6 @@
     </tr>
     </tbody>
 </table>
-<a href="attractions/add" class="btn btn-dark">Tilføj attraktion
-</a>
+<a href="attractions/add" class="btn btn-dark">Tilføj attraktion</a>
 </body>
 </html>

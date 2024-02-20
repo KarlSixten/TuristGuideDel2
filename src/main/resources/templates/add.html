@@ -24,16 +24,16 @@
 <form action="/attractions/save" th:objects="${attraction}" method="post">
     <div class="form-group">
         <label>Navn på attraktion</label>
-            <input type="text" class="form-control" name="name" th:field="*{attraction.name}"/>
+            <input type="text" class="form-control" name="name" th:field="*{attraction.name}" required/>
 
     </div>
     <div class="form-group">
         <label>Beskrivelse</label>
-        <input type="text" class="form-control" name="description" th:field="*{attraction.description}"/>
+        <input type="text" class="form-control" name="description" th:field="*{attraction.description}" required/>
     </div>
     <div class="form-group">
         <label>By</label>
-        <select class="form-control" th:field="*{attraction.city}">
+        <select class="form-control" th:field="*{attraction.city}" required>
             <option value="">Vælg venligst</option>
             <option th:each="city : ${validCities}" th:value="${city}" th:text="${city}"></option>
         </select>
@@ -47,7 +47,7 @@
         </div>
     <p>
         <label>Pris</label>
-        <input type="number" name="ticketPrice" th:number="*{attraction.ticketPrice}">
+        <input type="number" name="ticketPrice" min="0" th:number="*{attraction.ticketPrice}" required>
     </p>
     </div>
     <button type="submit" class="btn btn-primary">Tilføj attraktion</button>
