@@ -21,12 +21,10 @@
         <input type="hidden" name="indexOfAttraction" th:value="${indexOfAttraction}">
         <div class="mb-3">
             <label for="attractionName" class="form-label">Navn på attraktion</label>
-            <!-- Apply inline CSS to control the size of the input field -->
             <input name="name" type="text" class="form-control" id="attractionName" th:value="${attraction.name}" required style="width: 200px;">
         </div>
         <div class="mb-3">
             <label for="attractionDescription" class="form-label">Beskrivelse</label>
-            <!-- Apply inline CSS to control the size of the input field -->
             <input name="description" type="text" class="form-control" id="attractionDescription" th:value="${attraction.description}" required>
         </div>
         <div class="mb-3">
