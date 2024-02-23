@@ -7,16 +7,12 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
     <style>
-        body {
-            padding: 20px;
-        }
-
-        label {
-            font-weight: bold;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
+        .footer {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding: 10px; /* Add padding for better visibility */
+            background-color: #f8f9fa; /* Change this to your desired background color */
         }
     </style>
 </head>
@@ -24,7 +20,7 @@
 <form action="/attractions/save" th:objects="${attraction}" method="post">
     <div class="form-group">
         <label>Navn på attraktion</label>
-            <input type="text" class="form-control" name="name" th:field="*{attraction.name}" required/>
+            <input type="text" class="form-control" name="name" th:field="*{attraction.name}" required style="width: 200px;"/>
 
     </div>
     <div class="form-group">
@@ -33,7 +29,7 @@
     </div>
     <div class="form-group">
         <label>By</label>
-        <select class="form-control" th:field="*{attraction.city}" required>
+        <select class="form-control" th:field="*{attraction.city}" required style="width: 200px;">
             <option value="">Vælg venligst</option>
             <option th:each="city : ${validCities}" th:value="${city}" th:text="${city}"></option>
         </select>
@@ -53,5 +49,6 @@
     <button type="submit" class="btn btn-primary">Tilføj attraktion</button>
 </form>
 <a href="/attractions" class="btn btn-secondary">Tilbage</a>
+<div th:replace="~{fragments/footer :: footer}" class="footer">...</div>
 </body>
 </html>
