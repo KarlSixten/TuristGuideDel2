@@ -12,15 +12,15 @@
         <input type="hidden" name="indexOfAttraction" th:value="${indexOfAttraction}">
         <div class="mb-3">
             <label for="attractionName" class="form-label">Navn på attraktion</label>
-            <input name="name" type="text" class="form-control" id="attractionName" th:value="${attraction.name}">
+            <input name="name" type="text" class="form-control" id="attractionName" th:value="${attraction.name}" required>
         </div>
         <div class="mb-3">
             <label for="attractionDescription" class="form-label">Beskrivelse</label>
-            <input name="description" type="text" class="form-control" id="attractionDescription" th:value="${attraction.description}">
+            <input name="description" type="text" class="form-control" id="attractionDescription" th:value="${attraction.description}" required>
         </div>
         <div class="mb-3">
             <label for="attractionCity" class="form-label">By</label>
-            <select class="form-select" id="attractionCity" th:field="*{attraction.city}">
+            <select class="form-select" id="attractionCity" th:field="*{attraction.city}" required>
                 <option value="">Vælg venligst</option>
                 <option th:each="city : ${validCities}" th:value="${city}" th:text="${city}"></option>
             </select>
@@ -34,7 +34,7 @@
         </div>
         <p>
             <label>Pris</label>
-            <input name="ticketPrice" type="number" th:value="*{attraction.ticketPrice}" min="0" th:number="*{attraction.ticketPrice}">
+            <input name="ticketPrice" type="number" th:value="*{attraction.ticketPrice}" min="0" th:number="*{attraction.ticketPrice}" required>
         </p>
         <button type="submit" class="btn btn-primary">Opdater attraktion</button>
         <a href="/attractions" class="btn btn-secondary">Tilbage</a>
