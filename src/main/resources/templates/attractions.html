@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Attractions</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="icon" type="image/x-icon" href="/Users/karlbjarno/IdeaProjects/TuristGuideDel2/src/main/resources/static/favicon.png">
 </head>
 <body>
 <table class="table table-dark table-striped">
@@ -19,8 +18,10 @@
         <td><h3>Pris EUR</h3></td>
     </tr>
     <tr th:each="attraction : ${attractionsList}">
-        <td th:text="${attraction.name}"></td>
-        <td th:text="${attraction.description}"></td>
+        <td>
+            <a th:href="'attractions/' + ${attraction.name}" th:text="${attraction.name}"></a>
+        </td>
+        <td th:text="${#strings.length(attraction.description) &lt;= 100 ? attraction.description : #strings.substring(attraction.description, 0, 100) + '...' }"></td>
         <td th:text="${attraction.city}"></td>
         <td>
             <a th:href="'attractions/' + ${attraction.name} + '/tags'" class="btn btn-info">Tags</a>
