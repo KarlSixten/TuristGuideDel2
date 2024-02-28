@@ -5,6 +5,7 @@ import org.example.turistguidedel2.model.TouristAttraction;
 import org.example.turistguidedel2.repository.TouristRepository;
 import org.example.turistguidedel2.service.TouristService;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentMatchers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -12,8 +13,9 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
 
-import static org.hamcrest.core.StringContains.containsString;
+import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -41,24 +43,32 @@ class TouristControllerTest {
     //VIRKER IKKE
     @Test
     void showSpecificAttraction() throws Exception {
+        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")));
+
         mockMvc.perform(get("/attractions/Tivoli"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("attraction"));
-               // .andExpect(content().string(containsString("Forlystelsespark i København")));
+                .andExpect(view().name("attraction"))
+               .andExpect(content().string(containsString("Tivoli")));
     }
 
-    /* VIRKER IKKE
+
     @Test
     void getAttractionTags() throws Exception {
+       given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")));
+
         mockMvc.perform(get("/attractions/Tivoli/tags"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tags"))
                 .andExpect(content().string(containsString("Dyrt")));
     }
-    */
+    
 
     @Test
-    void addAttraction() {
+    void addAttraction() throws Exception {
+        mockMvc.perform(get("/attractions/add"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("form", touristAttraction))
+                .andExpect(view().name("attractionForm"));
     }
 
     @Test
