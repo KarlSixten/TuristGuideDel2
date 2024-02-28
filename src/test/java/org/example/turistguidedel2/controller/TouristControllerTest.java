@@ -40,10 +40,14 @@ class TouristControllerTest {
                 .andExpect(view().name("attractions"));
     }
 
-    //VIRKER IKKE
     @Test
     void showSpecificAttraction() throws Exception {
-        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")));
+        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
+                new TouristAttraction("Tivoli",
+                        "Forlystelsespark i København",
+                        "København",
+                        199,
+                        List.of("Hyggeligt", "Dyrt")));
 
         mockMvc.perform(get("/attractions/Tivoli"))
                 .andExpect(status().isOk())
@@ -51,26 +55,21 @@ class TouristControllerTest {
                .andExpect(content().string(containsString("Tivoli")));
     }
 
-
     @Test
     void getAttractionTags() throws Exception {
-       given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")));
+       given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
+               new TouristAttraction("Tivoli",
+                       "Forlystelsespark i København",
+                       "København",
+                       199,
+                       List.of("Hyggeligt", "Dyrt")));
 
         mockMvc.perform(get("/attractions/Tivoli/tags"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("tags"))
                 .andExpect(content().string(containsString("Dyrt")));
     }
-    
-     /*
-    @Test
-    void addAttraction() throws Exception {
-        mockMvc.perform(get("/attractions/add"))
-                .andExpect(status().isOk())
-                .andExpect(model().attribute("form", touristAttraction))
-                .andExpect(view().name("attractionForm"));
-    }
-         */
+
     @Test
     void saveAttraction() {
     }
