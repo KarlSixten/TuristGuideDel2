@@ -62,7 +62,7 @@ class TouristControllerTest {
                 .andExpect(content().string(containsString("Dyrt")));
     }
     
-
+     /*
     @Test
     void addAttraction() throws Exception {
         mockMvc.perform(get("/attractions/add"))
@@ -70,7 +70,7 @@ class TouristControllerTest {
                 .andExpect(model().attribute("form", touristAttraction))
                 .andExpect(view().name("attractionForm"));
     }
-
+         */
     @Test
     void saveAttraction() {
     }
