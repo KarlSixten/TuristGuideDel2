@@ -43,7 +43,7 @@
         </div>
         <p>
             <label>Pris</label>
-            <input name="ticketPrice" type="number" th:value="*{attraction.ticketPrice}" min="0" th:number="*{attraction.ticketPrice}" required>
+            <input name="ticketPrice" type="number" th:value="${#numbers.formatDecimal(attraction.ticketPrice,1,0)}" min="0" th:number="*{attraction.ticketPrice}" required>
         </p>
         <button type="submit" class="btn btn-primary">Opdater attraktion</button>
         <a href="/attractions" class="btn btn-secondary">Tilbage</a>

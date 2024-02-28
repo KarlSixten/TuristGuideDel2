@@ -39,7 +39,7 @@
         <td>
             <a th:href="'attractions/' + ${attraction.name}" th:text="${attraction.name}"></a>
         </td>
-        <td th:text="${#strings.length(attraction.description) &lt;= 100 ? attraction.description : #strings.substring(attraction.description, 0, 100) + '...' }"></td>
+        <td th:text="${#strings.length(attraction.description) &lt;= 50 ? attraction.description : #strings.substring(attraction.description, 0, 50) + '...' }"></td>
         <td th:text="${attraction.city}"></td>
         <td>
             <a th:href="'attractions/' + ${attraction.name} + '/tags'" class="btn btn-info">Tags</a>
