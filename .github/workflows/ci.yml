@@ -31,8 +31,9 @@ jobs:
       run: mvn -B package --file pom.xml
 
   qodana:
-    needs: build
     using: 'node20'
+    main: 'main.js'
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
