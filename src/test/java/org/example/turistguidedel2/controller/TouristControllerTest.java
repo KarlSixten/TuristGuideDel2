@@ -17,6 +17,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(TouristController.class)
@@ -40,6 +41,7 @@ class TouristControllerTest {
                 .andExpect(view().name("attractions"));
     }
 
+    //VIRKER IKKE
     @Test
     void showSpecificAttraction() throws Exception {
         given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
@@ -55,6 +57,7 @@ class TouristControllerTest {
                .andExpect(content().string(containsString("Tivoli")));
     }
 
+
     @Test
     void getAttractionTags() throws Exception {
        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
@@ -69,9 +72,22 @@ class TouristControllerTest {
                 .andExpect(view().name("tags"))
                 .andExpect(content().string(containsString("Dyrt")));
     }
-
+    
+     /*
     @Test
-    void saveAttraction() {
+    void addAttraction() throws Exception {
+        mockMvc.perform(get("/attractions/add"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("form", touristAttraction))
+                .andExpect(view().name("attractionForm"));
+    }
+         */
+    @Test
+    void saveAttraction() throws Exception{
+        mockMvc.perform(post("/attractions/save").sessionAttr("touristAttraction", this.touristAttraction))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/attractions"));
+
     }
 
     @Test
