@@ -1,0 +1,14 @@
+insert into cities (cityName) values ('København');
+insert into cities (cityName) values ('Århus');
+insert into cities (cityName) values ('Odense');
+
+
+insert into tags (tagName) values ('Hyggeligt');
+insert into tags (tagName) values ('Billigt');
+insert into tags (tagName) values ('Dyrt');
+insert into tags (tagName) values ('Historisk');
+
+insert into attractions (attractionName, attractionDescription, cityID, ticketPrice) values ('Tivoli', 'Forlystelsespark i København', 1, 200);
+
+
+insert into attractionid_tagid (attractionid, tagid) values (1,1), (1,3);

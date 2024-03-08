@@ -1,0 +1,38 @@
+create database if not exists TuristGuide default character set utf8;
+use turistguide;
+drop table if exists attractions;
+
+
+create table attractions(
+attractionID int NOT NULL AUTO_INCREMENT,
+attractionName varchar(30),
+attractionDescription varchar(250),
+cityId int,
+ticketPrice int,
+PRIMARY KEY (attractionID)
+);
+
+drop table if exists cities;
+create table cities(
+cityID int NOT NULL AUTO_INCREMENT,
+cityName varchar(50),
+
+PRIMARY KEY(cityID)
+);
+
+drop table if exists attractionID_tagID;
+create table attractionID_tagID(
+attractionID int,
+tagID int,
+
+PRIMARY KEY(attractionID,tagID)
+);
+
+drop table if exists tags;
+create table tags(
+tagID int not null auto_increment,
+tagName varchar(50),
+
+primary key (tagID)
+
+);
