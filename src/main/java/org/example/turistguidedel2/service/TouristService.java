@@ -37,6 +37,7 @@ public class TouristService {
         return touristRepository.findAttraction(searchString);
     }
 
+/*
     public void deleteAttraction(TouristAttraction attractionToDelete) {
         touristRepository.deleteAttraction(attractionToDelete);
     }

@@ -2,6 +2,8 @@ package org.example.turistguidedel2.controller;
 
 import org.example.turistguidedel2.model.TouristAttraction;
 import org.example.turistguidedel2.service.TouristService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,19 +21,31 @@ public class TouristController {
     }
 
     @GetMapping("")
-    public String getAllAttractions(Model model) throws IOException {
+    public ResponseEntity getAllAttractions(Model model) throws IOException {
         List<TouristAttraction> attractionList = touristService.getAttractionList();
         model.addAttribute("attractionsList", attractionList);
         model.addAttribute("dkkToEur", touristService.getDkkToEur());
-        return "attractions";
+        //return "attractions";
+        return new ResponseEntity<>(attractionList, HttpStatus.OK);
     }
 
     @GetMapping("{name}")
-    public String showSpecificAttraction(@PathVariable("name") String name, Model model) {
+    public ResponseEntity showSpecificAttraction(@PathVariable("name") String name, Model model) {
         TouristAttraction touristAttraction = touristService.findAttraction(name);
         model.addAttribute("attraction", touristAttraction);
-        return "attraction";
+        //return "attraction";
+        return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
     }
+
+   /* @GetMapping("add")
+    public String addAttraction(Model model) {
+        model.addAttribute("attraction", new TouristAttraction());
+        model.addAttribute("validCities", touristService.getValidCities());
+        model.addAttribute("tagsList", touristService.getTagsList());
+        return "add";
+    }
+*/
+    /*
 
     @GetMapping("{name}/tags")
     public String getAttractionTags(@PathVariable("name") String name, Model model) {
@@ -40,13 +54,7 @@ public class TouristController {
         return "tags";
     }
 
-    @GetMapping("add")
-    public String addAttraction(Model model) {
-        model.addAttribute("attraction", new TouristAttraction());
-        model.addAttribute("validCities", touristService.getValidCities());
-        model.addAttribute("tagsList", touristService.getTagsList());
-        return "add";
-    }
+
 
     @PostMapping("save")
     public String saveAttraction(@ModelAttribute TouristAttraction touristAttraction) {
@@ -75,5 +83,5 @@ public class TouristController {
         TouristAttraction attractionToDelete = touristService.findAttraction(name);
         touristService.deleteAttraction(attractionToDelete);
         return "redirect:/attractions";
-    }
+    }*/
 }

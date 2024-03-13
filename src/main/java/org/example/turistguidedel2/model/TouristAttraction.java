@@ -4,21 +4,28 @@ import java.util.List;
 
 
 public class TouristAttraction {
+    private int attractionID;
     private String name;
     private String description;
-    private String city;
-    private int ticketPrice; //Kan ikke få thymeleaf/html til at tage double som input, derfor er dette en int lige pt.
-    private List<String> tags;
+    private int city;
+    private int ticketPrice;
 
-    public TouristAttraction(String name, String description, String city, int ticketPrice, List<String> tags) {
+    public TouristAttraction(String name, String description, int city, int ticketPrice) {
         this.name = name;
         this.description = description;
         this.city = city;
-        this.tags = tags;
         this.ticketPrice = ticketPrice;
     }
 
     public TouristAttraction() {}
+
+    public TouristAttraction(int attractionID, String name, String description, int city, int ticketPrice) {
+        this.attractionID = attractionID;
+        this.name = name;
+        this.description = description;
+        this.city = city;
+        this.ticketPrice = ticketPrice;
+    }
 
     public String getName() {
         return name;
@@ -36,20 +43,12 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public String getCity() {
+    public int getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(int city) {
         this.city = city;
-    }
-
-    public List<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<String> tags) {
-        this.tags = tags;
     }
 
     public double getTicketPrice() {

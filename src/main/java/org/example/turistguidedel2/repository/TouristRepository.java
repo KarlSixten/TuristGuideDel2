@@ -12,17 +12,17 @@ public class TouristRepository {
     private final List<String> validCities = List.of("København", "Aarhus", "Odense");
     private final List<String> tagsList = List.of("Hyggeligt", "Billigt", "Dyrt", "Historisk");
 
-    public TouristRepository() {
+    /*public TouristRepository() {
         populateAttractionList();
-    }
+    }*/
 
-    private void populateAttractionList() {
+    /*private void populateAttractionList() {
         attractionList = new ArrayList<>(List.of(
                 new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt")),
                 new TouristAttraction("SMK", "Statens museum for kunst", "København", 49, List.of("Hyggeligt", "Billigt")),
                 new TouristAttraction("Tivoli Friheden", "Forlystelsespark i Aarhus", "Aarhus", 299, List.of("Uhyggeligt", "Billigt")),
                 new TouristAttraction("Rundetårn", "Et rundt tårn", "København", 249, List.of("Historisk"))));
-    }
+    }*/
 
     public List<TouristAttraction> getAttractionList() {
         return attractionList;
