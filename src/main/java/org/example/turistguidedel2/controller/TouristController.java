@@ -25,7 +25,7 @@ public class TouristController {
         //List<TouristAttraction> attractionList = touristService.getAttractionList();
         //model.addAttribute("attractionsList", attractionList);
         //model.addAttribute("dkkToEur", touristService.getDkkToEur());
-        return "attractions";
+        return "test";
         //return new ResponseEntity<>(attractionList, HttpStatus.OK);
     }
 
