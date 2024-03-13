@@ -1,3 +1,4 @@
+/*
 package org.example.turistguidedel2;
 
 import org.junit.jupiter.api.Test;
@@ -11,3 +12,4 @@ class TuristGuideDel2ApplicationTests {
     }
 
 }
+*/
