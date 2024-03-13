@@ -21,7 +21,7 @@ public class TouristRepository_DB {
 
     public List<TouristAttraction> getAttractionList(){
         List<TouristAttraction> touristAttractionList = new ArrayList<>();
-        try(Connection connection = ConnectionManager.getConnection(url, user, password)){
+        try(Connection connection = DriverManager.getConnection(url, user, password)){
             String SQL = "SELECT * FROM Attractions";
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(SQL);
