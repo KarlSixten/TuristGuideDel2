@@ -3,6 +3,7 @@ package org.example.turistguidedel2.service;
 import org.example.turistguidedel2.model.CurrencyRate;
 import org.example.turistguidedel2.model.TouristAttraction;
 import org.example.turistguidedel2.repository.TouristRepository;
+import org.example.turistguidedel2.repository.TouristRepository_DB;
 import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 
@@ -14,9 +15,9 @@ import java.util.List;
 
 @Service
 public class TouristService {
-    private final TouristRepository touristRepository;
+    private final TouristRepository_DB touristRepository;
 
-    public TouristService(TouristRepository touristRepository) {
+    public TouristService(TouristRepository_DB touristRepository) {
         this.touristRepository = touristRepository;
     }
 
@@ -32,6 +33,9 @@ public class TouristService {
     public List<TouristAttraction> getAttractionList() {
         return touristRepository.getAttractionList();
     }
+    public void addAttraction(TouristAttraction attractionToAdd) {
+        touristRepository.addAttraction(attractionToAdd);
+    }
 
     public TouristAttraction findAttraction(String searchString) {
         return touristRepository.findAttraction(searchString);
@@ -42,9 +46,7 @@ public class TouristService {
         touristRepository.deleteAttraction(attractionToDelete);
     }
 
-    public void addAttraction(TouristAttraction attractionToAdd) {
-        touristRepository.addAttraction(attractionToAdd);
-    }
+
 
     public List<String> getValidCities() {
         return touristRepository.getValidCities();
@@ -55,5 +57,5 @@ public class TouristService {
     }
     public void updateAttraction(int indexToUpdate, TouristAttraction updatedAttraction){
         touristRepository.updateAttraction(indexToUpdate, updatedAttraction);
-    }
+    }*/
 }
