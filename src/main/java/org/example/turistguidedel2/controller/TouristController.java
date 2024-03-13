@@ -21,12 +21,12 @@ public class TouristController {
     }
 
     @GetMapping("")
-    public ResponseEntity getAllAttractions(Model model) throws IOException {
+    public String getAllAttractions(Model model) throws IOException {
         List<TouristAttraction> attractionList = touristService.getAttractionList();
         model.addAttribute("attractionsList", attractionList);
         model.addAttribute("dkkToEur", touristService.getDkkToEur());
-        //return "attractions";
-        return new ResponseEntity<>(attractionList, HttpStatus.OK);
+        return "attractions";
+        //return new ResponseEntity<>(attractionList, HttpStatus.OK);
     }
 
     @GetMapping("{name}")
