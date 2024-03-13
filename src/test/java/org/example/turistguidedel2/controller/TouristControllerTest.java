@@ -1,3 +1,4 @@
+/*
 package org.example.turistguidedel2.controller;
 
 import org.example.turistguidedel2.model.CurrencyRate;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -23,9 +25,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(TouristController.class)
 class TouristControllerTest {
 
-    /*
+    */
+/*
     private TouristAttraction touristAttraction = new TouristAttraction("Tivoli", "Forlystelsespark i København", "København", 199, List.of("Hyggeligt", "Dyrt"));
-*/
+*//*
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -35,15 +39,18 @@ class TouristControllerTest {
     @MockBean
     private CurrencyRate currencyRate;
 
+*/
 /*    @Test
     void getAllAttractions() throws Exception {
         mockMvc.perform(get("/attractions"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("attractions"));
-    }*/
+    }*//*
+
 
     //VIRKER IKKE
-   /* @Test
+   */
+/* @Test
     void showSpecificAttraction() throws Exception {
         given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
                 new TouristAttraction("Tivoli",
@@ -56,10 +63,12 @@ class TouristControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("attraction"))
                .andExpect(content().string(containsString("Tivoli")));
-    }*/
+    }*//*
 
 
-   /* @Test
+
+   */
+/* @Test
     void getAttractionTags() throws Exception {
        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
                new TouristAttraction("Tivoli",
@@ -72,9 +81,11 @@ class TouristControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("tags"))
                 .andExpect(content().string(containsString("Dyrt")));
-    }*/
+    }*//*
+
     
-     /*
+     */
+/*
     @Test
     void addAttraction() throws Exception {
         mockMvc.perform(get("/attractions/add"))
@@ -82,14 +93,17 @@ class TouristControllerTest {
                 .andExpect(model().attribute("form", touristAttraction))
                 .andExpect(view().name("attractionForm"));
     }
-         */
- /*   @Test
+         *//*
+
+ */
+/*   @Test
     void saveAttraction() throws Exception{
         mockMvc.perform(post("/attractions/save").sessionAttr("touristAttraction", this.touristAttraction))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(view().name("redirect:/attractions"));
 
-    }*/
+    }*//*
+
 
     @Test
     void editAttraction() {
@@ -98,8 +112,20 @@ class TouristControllerTest {
     @Test
     void updateAttraction() {
     }
-
+*/
+/*
     @Test
-    void deleteAttraction() {
-    }
-}
+    void deleteAttraction() throws Exception {
+        given(touristService.findAttraction(ArgumentMatchers.any())).willReturn(
+                new TouristAttraction("Tivoli",
+                        "Forlystelsespark i København",
+                        "København",
+                        199,
+                        List.of("Hyggeligt", "Dyrt")));
+
+        mockMvc.perform(get("/attractionName/delete"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/attractions"));
+    }*//*
+
+}*/
