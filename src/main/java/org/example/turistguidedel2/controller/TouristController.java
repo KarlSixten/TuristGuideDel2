@@ -14,18 +14,18 @@ import java.util.List;
 @Controller
 @RequestMapping("attractions")
 public class TouristController {
-    /*private final TouristService touristService;
+    private final TouristService touristService;
 
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
-    }*/
+    }
 
     @GetMapping("")
     public String getAllAttractions(Model model) throws IOException {
-        //List<TouristAttraction> attractionList = touristService.getAttractionList();
-        //model.addAttribute("attractionsList", attractionList);
-        //model.addAttribute("dkkToEur", touristService.getDkkToEur());
-        return "test";
+        List<TouristAttraction> attractionList = touristService.getAttractionList();
+        model.addAttribute("attractionsList", attractionList);
+        model.addAttribute("dkkToEur", touristService.getDkkToEur());
+        return "attractions";
         //return new ResponseEntity<>(attractionList, HttpStatus.OK);
     }
 
