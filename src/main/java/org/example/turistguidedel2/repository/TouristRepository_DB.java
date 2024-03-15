@@ -21,10 +21,11 @@ public class TouristRepository_DB {
 
     public List<TouristAttraction> getAttractionList(){
         List<TouristAttraction> touristAttractionList = new ArrayList<>();
-        try(Connection connection = ConnectionManager.getConnection(url, user, password)){
-            String SQL = "SELECT * FROM Attractions";
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL);
+        String sql = "SELECT * FROM Attractions";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+        try(Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql))
+        {
             while (rs.next()){
                 touristAttractionList.add(createAttraction(rs));
             }
