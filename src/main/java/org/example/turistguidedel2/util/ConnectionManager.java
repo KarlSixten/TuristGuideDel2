@@ -7,6 +7,8 @@ import java.sql.SQLException;
 public class ConnectionManager {
     private static Connection connection;
 
+    private ConnectionManager() {}
+
     public static Connection getConnection(String url, String user, String password) {
         if (connection != null) return connection;
 
