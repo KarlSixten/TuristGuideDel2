@@ -15,10 +15,10 @@ CREATE TABLE TURISTGUIDE.Attractions (
 );
 
 INSERT INTO TURISTGUIDE.Attractions (attractionName, attractionDescription, cityId, ticketPrice) VALUES
-                                ('Tivoli', 'Forlystelsespark i København', 1, 200),
-                                ('SMK', 'Statens musen for kunst', 1, 49),
-                                ('Tivoli Friheden', 'Forlystelsespark i Århus', 2, 300),
-                                ('Rundetårn', ' Et rundt tårn', 1, 249);
+                                ('Tivoli_H2', 'Forlystelsespark i København_H2', 1, 200),
+                                ('SMK_H2', 'Statens musen for kunst_H2', 1, 49),
+                                ('Tivoli Friheden_H2', 'Forlystelsespark i Århus_H2', 2, 300),
+                                ('Rundetårn_H2', ' Et rundt tårn_H2', 1, 249);
 
 CREATE TABLE TURISTGUIDE.Cities (
                                     cityID int NOT NULL AUTO_INCREMENT,
