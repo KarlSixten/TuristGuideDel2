@@ -7,10 +7,10 @@ public class TouristAttraction {
     private int attractionID;
     private String name;
     private String description;
-    private int city;
+    private String city;
     private int ticketPrice;
 
-    public TouristAttraction(String name, String description, int city, int ticketPrice) {
+    public TouristAttraction(String name, String description, String city, int ticketPrice) {
         this.name = name;
         this.description = description;
         this.city = city;
@@ -19,7 +19,7 @@ public class TouristAttraction {
 
     public TouristAttraction() {}
 
-    public TouristAttraction(int attractionID, String name, String description, int city, int ticketPrice) {
+    public TouristAttraction(int attractionID, String name, String description, String city, int ticketPrice) {
         this.attractionID = attractionID;
         this.name = name;
         this.description = description;
@@ -43,11 +43,11 @@ public class TouristAttraction {
         this.description = description;
     }
 
-    public int getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(String city) {
         this.city = city;
     }
 

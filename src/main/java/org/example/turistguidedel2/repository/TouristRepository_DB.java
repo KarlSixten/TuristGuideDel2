@@ -21,7 +21,7 @@ public class TouristRepository_DB {
 
     public List<TouristAttraction> getAttractionList(){
         List<TouristAttraction> touristAttractionList = new ArrayList<>();
-        String sql = "SELECT * FROM Attractions";
+        String sql = "SELECT *, cityName FROM Attractions, cities WHERE Attractions.cityID = Cities.cityID;";
         Connection connection = ConnectionManager.getConnection(url, user, password);
         try(Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(sql))
@@ -37,17 +37,16 @@ public class TouristRepository_DB {
     }
 
     public TouristAttraction findAttraction(String searchString) {
-        try(Connection connection = ConnectionManager.getConnection(url, user, password)){
-            String SQL = "SELECT * FROM Attractions WHERE attractionName LIKE ?";
-            PreparedStatement ps = connection.prepareStatement(SQL);
+        TouristAttraction touristAttraction = null;
+        String sql = "SELECT *, cityName FROM Attractions, cities WHERE Attractions.cityID = cities.cityID AND attractionName LIKE ?\n";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+        try(PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, searchString);
             ResultSet rs = ps.executeQuery();
-            TouristAttraction touristAttraction;
             if (rs.next()) {
-                return createAttraction(rs);
-            } else {
-                return null;
+                touristAttraction = createAttraction(rs);
             }
+            return touristAttraction;
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
@@ -55,11 +54,13 @@ public class TouristRepository_DB {
 
 
     public TouristAttraction addAttraction(TouristAttraction touristAttraction){
-        try(Connection connection = ConnectionManager.getConnection(url, user, password)){
-            String SQL = "INSERT INTO Attractions(touristAttraction) values ?;";
-            PreparedStatement pstmt = connection.prepareStatement(SQL);
-            pstmt.setString(1,touristAttraction.getName());
+        String SQL = "INSERT INTO Attractions(touristAttraction) values ?;";
+        Connection connection = ConnectionManager.getConnection(url,user,password);
+
+        try(PreparedStatement pstmt = connection.prepareStatement(SQL)){
+            pstmt.setString(1, touristAttraction.getName());
             pstmt.executeUpdate();
+
 
         }catch (SQLException e){
             throw new RuntimeException(e);
@@ -71,7 +72,7 @@ public class TouristRepository_DB {
                 rs.getInt("attractionID"),
                 rs.getString("attractionName"),
                 rs.getString("attractionDescription"),
-                rs.getInt("cityID"),
+                rs.getString("cityName"),
                 rs.getInt("ticketPrice"));
         return attraction;
     }

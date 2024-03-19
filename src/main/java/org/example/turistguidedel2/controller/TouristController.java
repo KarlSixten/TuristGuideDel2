@@ -26,16 +26,14 @@ public class TouristController {
         model.addAttribute("attractionsList", attractionList);
         model.addAttribute("dkkToEur", touristService.getDkkToEur());
         return "attractions";
-        //return new ResponseEntity<>(attractionList, HttpStatus.OK);
     }
 
-  /*  @GetMapping("{name}")
-    public ResponseEntity showSpecificAttraction(@PathVariable("name") String name, Model model) {
+    @GetMapping("{name}")
+    public String showSpecificAttraction(@PathVariable("name") String name, Model model) {
         TouristAttraction touristAttraction = touristService.findAttraction(name);
         model.addAttribute("attraction", touristAttraction);
-        //return "attraction";
-        return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
-    }*/
+        return "attraction";
+    }
 
    /* @GetMapping("add")
     public String addAttraction(Model model) {
@@ -45,7 +43,6 @@ public class TouristController {
         return "add";
     }
 */
-    /*
 
     @GetMapping("{name}/tags")
     public String getAttractionTags(@PathVariable("name") String name, Model model) {
@@ -54,7 +51,7 @@ public class TouristController {
         return "tags";
     }
 
-
+/*
 
     @PostMapping("save")
     public String saveAttraction(@ModelAttribute TouristAttraction touristAttraction) {
