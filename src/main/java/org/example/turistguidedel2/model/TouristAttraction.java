@@ -58,4 +58,8 @@ public class TouristAttraction {
     public void setTicketPrice(int ticketPrice) {
         this.ticketPrice = ticketPrice;
     }
+
+    public int getAttractionID() {
+        return attractionID;
+    }
 }

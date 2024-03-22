@@ -38,7 +38,7 @@ public class TouristRepository_DB {
 
     public TouristAttraction findAttraction(String searchString) {
         TouristAttraction touristAttraction = null;
-        String sql = "SELECT *, cityName FROM Attractions, cities WHERE Attractions.cityID = cities.cityID AND attractionName LIKE ?\n";
+        String sql = "SELECT *, cityName FROM Attractions, cities WHERE Attractions.cityID = cities.cityID AND attractionName LIKE ?";
         Connection connection = ConnectionManager.getConnection(url, user, password);
         try(PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, searchString);
@@ -65,6 +65,18 @@ public class TouristRepository_DB {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }return touristAttraction;
+    }
+
+    public void deleteAttraction(int attractionID) {
+        String sql = "DELETE FROM attractions where attractionID = ?";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+
+        try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, attractionID);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private TouristAttraction createAttraction(ResultSet rs) throws SQLException {

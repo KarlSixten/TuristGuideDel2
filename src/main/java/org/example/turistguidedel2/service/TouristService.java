@@ -41,13 +41,12 @@ public class TouristService {
         return touristRepository.findAttraction(searchString);
     }
 
-/*
-    public void deleteAttraction(TouristAttraction attractionToDelete) {
-        touristRepository.deleteAttraction(attractionToDelete);
+    public void deleteAttraction(int attractionID) {
+        touristRepository.deleteAttraction(attractionID);
     }
 
 
-
+/*
     public List<String> getValidCities() {
         return touristRepository.getValidCities();
     }
