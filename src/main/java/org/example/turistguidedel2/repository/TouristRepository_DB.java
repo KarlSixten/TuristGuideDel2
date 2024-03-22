@@ -102,7 +102,41 @@ public class TouristRepository_DB {
         }
     }
 
-    public List<String> getTagList(int attractionID) {
+    public List<String> getValidCities() {
+        List<String> cities = new ArrayList<>();
+        String sql = "SELECT * FROM cities;";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                cities.add(rs.getString("cityName"));
+            }
+            return cities;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<String> getValidTags() {
+        List<String> tags = new ArrayList<>();
+        String sql = "SELECT * FROM tags;";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                tags.add(rs.getString("tagName"));
+            }
+            return tags;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<String> getAttractionTagList(int attractionID) {
         List<String> tags = new ArrayList<>();
         String sql_getTagList = "SELECT tags.tagName\n" +
                 "FROM attractions\n" +

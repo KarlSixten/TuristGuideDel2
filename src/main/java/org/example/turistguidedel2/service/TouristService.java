@@ -16,12 +16,10 @@ import java.util.List;
 @Service
 public class TouristService {
     private final TouristRepository_DB touristRepository;
-    private final TouristRepository touristRepository1;
 
 
-    public TouristService(TouristRepository_DB touristRepository, TouristRepository touristRepository1) {
+    public TouristService(TouristRepository_DB touristRepository) {
         this.touristRepository = touristRepository;
-        this.touristRepository1 = touristRepository1;
     }
 
     public double getDkkToEur() throws IOException {
@@ -49,7 +47,7 @@ public class TouristService {
     }
 
     public List<String> getTagList(int attractionID) {
-        return touristRepository.getTagList(attractionID);
+        return touristRepository.getAttractionTagList(attractionID);
     }
 
 
@@ -59,11 +57,11 @@ public class TouristService {
 
 
     public List<String> getValidCities() {
-        return touristRepository1.getValidCities();
+        return touristRepository.getValidCities();
     }
 
     public List<String> getTagsList() {
-        return touristRepository1.getTagsList();
+        return touristRepository.getValidTags();
     }
    /* public void updateAttraction(int indexToUpdate, TouristAttraction updatedAttraction){
         touristRepository.updateAttraction(indexToUpdate, updatedAttraction);
