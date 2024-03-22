@@ -45,6 +45,10 @@ public class TouristService {
         touristRepository.deleteAttraction(attractionID);
     }
 
+    public List<String> getTagList(int attractionID) {
+        return touristRepository.getTagList(attractionID);
+    }
+
 
 /*
     public List<String> getValidCities() {

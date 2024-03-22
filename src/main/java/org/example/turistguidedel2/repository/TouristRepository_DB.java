@@ -5,7 +5,6 @@ import org.example.turistguidedel2.util.ConnectionManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +80,27 @@ public class TouristRepository_DB {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<String> getTagList(int attractionID) {
+        List<String> tags = new ArrayList<>();
+        String sql_getTagList = "SELECT tags.tagName\n" +
+                "FROM attractions\n" +
+                "JOIN attractionid_tagid ON attractions.attractionID = attractionid_tagid.attractionID\n" +
+                "JOIN tags ON attractionid_tagid.tagID = tags.tagID\n" +
+                "WHERE attractions.attractionID = ?;";
+        Connection connection = ConnectionManager.getConnection(url, user, password);
+
+        try (PreparedStatement pstmt = connection.prepareStatement(sql_getTagList)) {
+            pstmt.setInt(1, attractionID);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                tags.add(rs.getString("tagName"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return tags;
     }
 
     private TouristAttraction createAttraction(ResultSet rs) throws SQLException {
