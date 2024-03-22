@@ -68,12 +68,16 @@ public class TouristRepository_DB {
     }
 
     public void deleteAttraction(int attractionID) {
-        String sql = "DELETE FROM attractions where attractionID = ?";
+        String sql_deleteAttraction = "DELETE FROM attractions WHERE attractionID = ?;";
+        String sql_deleteTagReference = "DELETE FROM attractionID_tagID WHERE attractionID = ?;";
         Connection connection = ConnectionManager.getConnection(url, user, password);
 
-        try(PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setInt(1, attractionID);
-            pstmt.executeUpdate();
+        try(PreparedStatement pstmtAttraction = connection.prepareStatement(sql_deleteAttraction);
+            PreparedStatement pstmtTagReference = connection.prepareStatement(sql_deleteTagReference)) {
+            pstmtAttraction.setInt(1, attractionID);
+            pstmtTagReference.setInt(1, attractionID);
+            pstmtAttraction.executeUpdate();
+            pstmtTagReference.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

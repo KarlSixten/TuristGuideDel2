@@ -4,6 +4,8 @@ USE TURISTGUIDE;
 
 DROP TABLE IF EXISTS TURISTGUIDE.Attractions;
 DROP TABLE IF EXISTS TURISTGUIDE.Cities;
+drop table if exists TURISTGUIDE.attractionID_tagID;
+drop table if exists TURISTGUIDE.tags;
 
 CREATE TABLE TURISTGUIDE.Attractions (
                                attractionID int NOT NULL AUTO_INCREMENT,
@@ -30,3 +32,33 @@ INSERT INTO TURISTGUIDE.Cities (cityName) VALUES
     ('København'),
     ('Århus'),
     ('Odense');
+
+
+CREATE TABLE TURISTGUIDE.attractionID_tagID(
+                                   attractionID int,
+                                   tagID int,
+                                   PRIMARY KEY(attractionID,tagID)
+);
+
+insert into TURISTGUIDE.attractionID_tagID (attractionid, tagid) values
+                                                                     (1,1),
+                                                                     (1,3),
+                                                                     (2,1),
+                                                                     (2,2),
+                                                                     (3,1),
+                                                                     (3,4),
+                                                                     (4,4);
+
+
+CREATE TABLE TURISTGUIDE.tags(
+                     tagID int not null auto_increment,
+                     tagName varchar(50),
+                     primary key (tagID)
+
+);
+
+INSERT INTO TURISTGUIDE.tags(tagName) VALUES
+                                          ('Hyggeligt'),
+                                          ('Billigt'),
+                                          ('Dyrt'),
+                                          ('Historisk');
