@@ -40,7 +40,7 @@ public class TouristController {
     public String addAttraction(Model model) {
         model.addAttribute("attraction", new TouristAttraction());
         model.addAttribute("validCities", touristService.getValidCities());
-       // model.addAttribute("tagsList", touristService.getTagsList());
+        //model.addAttribute("tagsList", touristService.getTagsList());
         return "add";
     }
 
