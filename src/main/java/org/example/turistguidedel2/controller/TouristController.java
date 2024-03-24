@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.List;
@@ -60,25 +61,29 @@ public class TouristController {
     public String saveAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.addAttraction(touristAttraction);
         return "redirect:/attractions";
-    }
-/*
+    }*/
+
     @GetMapping("{name}/edit")
     public String editAttraction(@PathVariable("name") String name, Model model) {
         TouristAttraction attractionToUpdate = touristService.findAttraction(name);
         model.addAttribute("attraction", attractionToUpdate);
         model.addAttribute("indexOfAttraction", touristService.getAttractionList().indexOf(attractionToUpdate));
         model.addAttribute("validCities", touristService.getValidCities());
-        model.addAttribute("tagsList", touristService.getTagsList());
+        //model.addAttribute("tagsList", touristService.getTagsList());
         return "update";
     }
-
-    @PostMapping("update")
-    public String updateAttraction(@RequestParam int indexOfAttraction, @ModelAttribute TouristAttraction attractionToUpdate) {
-        touristService.updateAttraction(indexOfAttraction, attractionToUpdate);
-        return"redirect:/attractions";
+@PostMapping("update")
+    public String updateAttraction(@ModelAttribute("touristAttraction") TouristAttraction attractionToUpdate,
+                                   RedirectAttributes redirectAttributes) {
+        try {
+            touristService.updateAttraction(attractionToUpdate);
+            redirectAttributes.addFlashAttribute("successMessage", "Attraction updated successfully");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Failed to update attraction: " + e.getMessage());
+            e.printStackTrace();
+        }return "redirect:/attractions";
     }
 
- */
 
     @GetMapping("{name}/delete")
     public String deleteAttraction(@PathVariable("name") String name) {

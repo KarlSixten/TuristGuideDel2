@@ -65,6 +65,9 @@ public class TouristService {
     public List<String> getTagsList() {
         return touristRepository1.getTagsList();
     }
+    public void updateAttraction(TouristAttraction touristAttraction){
+touristRepository.updateTouristAttraction(touristAttraction);
+    }
    /* public void updateAttraction(int indexToUpdate, TouristAttraction updatedAttraction){
         touristRepository.updateAttraction(indexToUpdate, updatedAttraction);
     }*/

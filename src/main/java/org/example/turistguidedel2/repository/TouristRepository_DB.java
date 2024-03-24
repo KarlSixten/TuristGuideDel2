@@ -152,4 +152,29 @@ public class TouristRepository_DB {
         }
         return tags;
     }
+    public TouristAttraction updateTouristAttraction(TouristAttraction touristAttractionToUpdate){
+String SQLUPDATE ="UPDATE attractions set attractionDescription = ? where attractionName = ?; ";
+String SQLDELETE = "DELETE FROM attractionid_tagid WHERE attractionID = (SELECT attractionID FROM attractions WHERE AttractionNAME = ?);";
+String SQLINSERT= "INSERT INTO attractionid_tagid (attractionID, tagID) \n" +
+        "                SELECT tags.tagid, attractions.attractionID\n" +
+        "                FROM tags, attractions \n" +
+        "                WHERE tags.tagName = 'hyggeligt' AND  attractions.attractionName = 'SMK';";
+
+        Connection con = ConnectionManager.getConnection(url, user, password);
+        try (PreparedStatement updateAttractionStmt = con.prepareStatement(SQLUPDATE);
+             PreparedStatement deleteTagsStmt = con.prepareStatement(SQLDELETE);
+             PreparedStatement insertTagsStmt = con.prepareStatement(SQLINSERT)) {
+
+            updateAttractionStmt.setString(1, touristAttractionToUpdate.getDescription());
+            updateAttractionStmt.setString(2, touristAttractionToUpdate.getName());
+            updateAttractionStmt.executeUpdate();
+
+            deleteTagsStmt.setString(1, touristAttractionToUpdate.getName());
+            deleteTagsStmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return touristAttractionToUpdate;
+    }
 }
