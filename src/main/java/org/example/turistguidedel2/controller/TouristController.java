@@ -55,13 +55,11 @@ public class TouristController {
         return "tags";
     }
 
-/*
-
     @PostMapping("save")
     public String saveAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.addAttraction(touristAttraction);
         return "redirect:/attractions";
-    }*/
+    }
 
     @GetMapping("{name}/edit")
     public String editAttraction(@PathVariable("name") String name, Model model) {
