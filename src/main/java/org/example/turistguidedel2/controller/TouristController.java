@@ -72,16 +72,16 @@ public class TouristController {
         //model.addAttribute("tagsList", touristService.getTagsList());
         return "update";
     }
-@PostMapping("update")
+    @PostMapping("update")
     public String updateAttraction(@ModelAttribute("touristAttraction") TouristAttraction attractionToUpdate,
-                                   RedirectAttributes redirectAttributes) {
-        try {
-            touristService.updateAttraction(attractionToUpdate);
-            redirectAttributes.addFlashAttribute("successMessage", "Attraction updated successfully");
-        } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Failed to update attraction: " + e.getMessage());
-            e.printStackTrace();
-        }return "redirect:/attractions";
+                                       RedirectAttributes redirectAttributes) {
+            try {
+                touristService.updateAttraction(attractionToUpdate);
+                redirectAttributes.addFlashAttribute("successMessage", "Attraction updated successfully");
+            } catch (Exception e) {
+                redirectAttributes.addFlashAttribute("errorMessage", "Failed to update attraction: " + e.getMessage());
+                e.printStackTrace();
+            }return "redirect:/attractions";
     }
 
 
